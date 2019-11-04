@@ -1,23 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+import Toggle from "./Toggle";
+import Modal from "./Modal";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Toggle>
+          {({ on, toggle }) => (
+            <Fragment>
+              <button onClick={toggle}>Login</button>
+              <Modal on={on} toggle={toggle}>
+                <h1>I'm in a modal!</h1>
+              </Modal>
+            </Fragment>
+          )}
+        </Toggle>
       </header>
     </div>
   );
